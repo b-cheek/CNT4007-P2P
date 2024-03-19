@@ -19,14 +19,15 @@ public class PeerSocket {
         this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+        BufferedReader buffRead = new BufferedReader(new InputStreamReader(System.in));
         while(true) {
             System.out.print("Hello, please input a sentence: ");
             //read a sentence from the standard input
-            message = in.readLine();
+            message = buffRead.readLine();
             //Send the sentence to the server
             sendMessage(message);
             //Receive the upperCase sentence from the server
-            MESSAGE = (String)in.readObject();
+            MESSAGE = (String)buffRead.readLine();
             //show the message to the user
             System.out.println("Receive message: " + MESSAGE);
 
@@ -45,19 +46,17 @@ public class PeerSocket {
 
     void sendMessage(String msg)
     {
-        try{
-            //stream write the message
-            out.writeObject(msg);
-            out.flush();
-        }
-        catch(IOException ioException){
-            ioException.printStackTrace();
-        }
+        //stream write the message
+        out.write(msg);
+        out.flush();
     }
+
+
 
     public void close() throws IOException {
         out.close();
         in.close();
         socket.close();
     }
+
 }
