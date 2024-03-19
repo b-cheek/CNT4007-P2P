@@ -3,9 +3,9 @@ package org.example;
 public class PeerInfo {
     public String peerId;
     public String peerAddress;
-    public String peerPort;
+    public int peerPort;
 
-    public PeerInfo(String pId, String pAddress, String pPort) {
+    public PeerInfo(String pId, String pAddress, int pPort) {
         peerId = pId;
         peerAddress = pAddress;
         peerPort = pPort;
@@ -20,7 +20,7 @@ public class PeerInfo {
     }
 
 
-    public String getPeerPort() {
+    public int getPeerPort() {
         return peerPort;
     }
 
@@ -34,7 +34,7 @@ public class PeerInfo {
         this.peerId = peerId;
     }
 
-    public void setPort(String peerPort) {
+    public void setPort(int peerPort) {
         this.peerPort = peerPort;
     }
 }
