@@ -29,7 +29,7 @@ public class PeerSocket {
             //Receive the upperCase sentence from the server
             MESSAGE = (String)buffRead.readLine();
             //show the message to the user
-            System.out.println("Receive message: " + MESSAGE);
+            System.out.println("Client Receive message: " + MESSAGE);
 
         }
 

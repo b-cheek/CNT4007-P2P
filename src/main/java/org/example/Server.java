@@ -72,7 +72,7 @@ public class Server {
             finally{
                 //Close connections
                 try{
-                    in.close();
+                    //in.close();
                     out.close();
                     connection.close();
                 }
