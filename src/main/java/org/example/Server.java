@@ -47,24 +47,25 @@ public class Server {
             try{
                 //initialize Input and Output streams
                 out = new ObjectOutputStream(connection.getOutputStream());
-                out.flush();
                 in = new ObjectInputStream(connection.getInputStream());
-                try{
-                    while(true)
-                    {
-                        //receive the message sent from the client
-                        message = (String)in.readObject();
-                        //show the message to the user
-                        System.out.println("Receive message: " + message + " from client " + no);
-                        //Capitalize all letters in the message
-                        MESSAGE = message.toUpperCase();
-                        //send MESSAGE back to the client
-                        sendMessage(MESSAGE);
-                    }
+
+                BufferedReader buffRead = new BufferedReader(new InputStreamReader(System.in));
+
+                while(true) {
+                    System.out.print("Hello, please input a sentence: ");
+                    //read a sentence from the standard input
+                    message = buffRead.readLine();
+                    //Send the sentence to the server
+                    sendMessage(message);
+                    //Receive the upperCase sentence from the server
+                    MESSAGE = (String)buffRead.readLine();
+                    //show the message to the user
+                    System.out.println("Server Receive message: " + MESSAGE);
+
                 }
-                catch(ClassNotFoundException classnot){
-                    System.err.println("Data received in unknown format");
-                }
+               // catch(ClassNotFoundException classnot){
+               //     System.err.println("Data received in unknown format");
+               // }
             }
             catch(IOException ioException){
                 System.out.println("Disconnect with Client " + no);
@@ -72,7 +73,7 @@ public class Server {
             finally{
                 //Close connections
                 try{
-                    //in.close();
+                    in.close();
                     out.close();
                     connection.close();
                 }

@@ -7,7 +7,6 @@ public class Main {
         PeerInfo peer = new PeerInfo("1001","localhost",8000);
         try {
             PeerSocket peer0 = new PeerSocket(peer.peerAddress, peer.peerPort);
-            Server server0 = new Server();
             peer0.sendMessage(args[0]);
             //server0.sendMessage();
         }
