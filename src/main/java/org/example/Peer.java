@@ -11,5 +11,19 @@ public class Peer {
     public void connect(String host, int port) {
         this.client = new Client(host, port);
         client.start();
+        try {
+            client.join();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void close() {
+        try {
+            this.server.join();
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

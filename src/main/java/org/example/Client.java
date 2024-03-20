@@ -35,6 +35,9 @@ public class Client extends Thread {
 				System.out.print("Hello, please input a sentence: ");
 				//read a sentence from the standard input
 				message = bufferedReader.readLine();
+				if (message.equalsIgnoreCase("close")) {
+					break;
+				}
 				//Send the sentence to the server
 				sendMessage(message);
 				//Receive the upperCase sentence from the server
@@ -61,6 +64,7 @@ public class Client extends Thread {
 				in.close();
 				out.close();
 				requestSocket.close();
+				System.out.printf("Connection to %s on port %d closed%n", this.host, this.port);
 			}
 			catch(IOException ioException){
 				ioException.printStackTrace();

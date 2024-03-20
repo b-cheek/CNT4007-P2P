@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c420a0c3-a6e2-4707-bbda-8f1addf6f389" name="Changes" comment="Add a class to handle socket creation and stream management, fails on creating sockets on localhost ports" />
+    <list default="true" id="c420a0c3-a6e2-4707-bbda-8f1addf6f389" name="Changes" comment="Add a class to handle socket creation and stream management, fails on creating sockets on localhost ports">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Peer.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,10 +41,10 @@
     "Application.Main.executor": "Run",
     "Application.Main1.executor": "Run",
     "Application.Server.executor": "Debug",
-    "Application.Test.executor": "Debug",
+    "Application.Test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "example-code",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -82,7 +87,8 @@
       <workItem from="1710853094388" duration="4147000" />
       <workItem from="1710876944245" duration="2021000" />
       <workItem from="1710930425872" duration="313000" />
-      <workItem from="1710931176460" duration="6029000" />
+      <workItem from="1710931176460" duration="6161000" />
+      <workItem from="1710938306592" duration="1114000" />
     </task>
     <servers />
   </component>
@@ -90,15 +96,6 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.example.Server" memberName="sPort" />
