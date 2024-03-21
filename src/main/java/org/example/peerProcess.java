@@ -1,10 +1,10 @@
 package org.example;
 
-public class Main1 {
+public class peerProcess {
     public static void main(String[] args) {
         try {
-            Peer peer1 = new Peer(1001, 9000);
-            peer1.connect("localhost", 8000);
+            Peer peer0 = new Peer(Integer.parseInt(args[0]), 8000);
+            peer0.connect("localhost", 9000);
         }
         catch (Exception e) {
             e.printStackTrace();

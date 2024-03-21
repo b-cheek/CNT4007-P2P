@@ -11,8 +11,9 @@ public class Client extends Thread {
 	String MESSAGE;                //capitalized message read from the server
 	private String host;
 	private int port;
+	private int peerID;
 
-	public Client(String host, int port) {
+	public Client(String host, int port, int peerID) {
 		this.host = host;
 		this.port = port;
 	}
@@ -22,7 +23,7 @@ public class Client extends Thread {
 		try{
 			//create a socket to connect to the server
 			requestSocket = new Socket(this.host, this.port);
-			System.out.printf("Connected to %s in port %d%n", host, port);
+			System.out.printf("Connected to %s on port %d%n", host, port);
 			//initialize inputStream and outputStream
 			out = new ObjectOutputStream(requestSocket.getOutputStream());
 			out.flush();
@@ -81,6 +82,17 @@ public class Client extends Thread {
 		}
 		catch(IOException ioException){
 			ioException.printStackTrace();
+		}
+	}
+
+	void sendHandshake() {
+		try {
+			out.writeBytes("P2PFILESHARINGPRROJ");
+			out.write(new byte[10]);
+			out.writeInt(this.peerID);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

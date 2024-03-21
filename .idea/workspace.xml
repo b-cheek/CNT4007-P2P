@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c420a0c3-a6e2-4707-bbda-8f1addf6f389" name="Changes" comment="Add a class to handle socket creation and stream management, fails on creating sockets on localhost ports">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Peer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Peer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +39,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.Main1.executor": "Run",
+    "Application.Main.executor": "Debug",
+    "Application.Main1.executor": "Debug",
     "Application.Server.executor": "Debug",
     "Application.Test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -88,7 +89,8 @@
       <workItem from="1710876944245" duration="2021000" />
       <workItem from="1710930425872" duration="313000" />
       <workItem from="1710931176460" duration="6161000" />
-      <workItem from="1710938306592" duration="1114000" />
+      <workItem from="1710938306592" duration="1225000" />
+      <workItem from="1711025810512" duration="2245000" />
     </task>
     <servers />
   </component>
@@ -96,6 +98,24 @@
     <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Client.java</url>
+          <line>87</line>
+          <properties class="org.example.Client" method="sendHandshake">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Server.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.example.Server" memberName="sPort" />
