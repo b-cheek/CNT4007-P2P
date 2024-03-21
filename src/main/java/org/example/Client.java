@@ -16,6 +16,7 @@ public class Client extends Thread {
 	public Client(String host, int port, int peerID) {
 		this.host = host;
 		this.port = port;
+		this.peerID = peerID;
 	}
 
 	public void run()
@@ -41,6 +42,7 @@ public class Client extends Thread {
 				}
 				//Send the sentence to the server
 				sendMessage(message);
+//				sendHandshake();
 				//Receive the upperCase sentence from the server
 				MESSAGE = (String)in.readObject();
 				//show the message to the user
@@ -90,6 +92,7 @@ public class Client extends Thread {
 			out.writeBytes("P2PFILESHARINGPRROJ");
 			out.write(new byte[10]);
 			out.writeInt(this.peerID);
+			out.flush();
 		}
 		catch(IOException e) {
 			e.printStackTrace();
