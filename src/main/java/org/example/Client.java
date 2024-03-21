@@ -88,7 +88,7 @@ public class Client extends Thread {
 	}
 
 	void sendHandshake() {
-		try {
+		try { // The main problem to solve is reading bytes from the in stream for the server and client and identifying the handshake as opposed to currently taking a string out of whatever bytes it receives
 			out.writeBytes("P2PFILESHARINGPRROJ");
 			out.write(new byte[10]);
 			out.writeInt(this.peerID);
