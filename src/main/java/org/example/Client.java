@@ -6,7 +6,7 @@ import java.io.*;
 public class Client extends Thread {
 	Socket requestSocket;           //socket connect to the server
 	ObjectOutputStream out;         //stream write to the socket
- 	ObjectInputStream in;          //stream read from the socket
+	ObjectInputStream in;          //stream read from the socket
 	String message;                //message send to the server
 	String MESSAGE;                //capitalized message read from the server
 	private String host;
@@ -19,9 +19,8 @@ public class Client extends Thread {
 		this.peerID = peerID;
 	}
 
-	public void run()
-	{
-		try{
+	public void run() {
+		try {
 			//create a socket to connect to the server
 			requestSocket = new Socket(this.host, this.port);
 			System.out.printf("Connected to %s on port %d%n", host, port);
@@ -29,11 +28,10 @@ public class Client extends Thread {
 			out = new ObjectOutputStream(requestSocket.getOutputStream());
 			out.flush();
 			in = new ObjectInputStream(requestSocket.getInputStream());
-			
+
 			//get Input from standard input
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-			while(true)
-			{
+			while (true) {
 				System.out.print("Hello, please input a sentence: ");
 				//read a sentence from the standard input
 				message = bufferedReader.readLine();
@@ -44,45 +42,38 @@ public class Client extends Thread {
 				sendMessage(message);
 //				sendHandshake();
 				//Receive the upperCase sentence from the server
-				MESSAGE = (String)in.readObject();
+				MESSAGE = (String) in.readObject();
 				//show the message to the user
 				System.out.println("Receive message: " + MESSAGE);
 			}
-		}
-		catch (ConnectException e) {
-    			System.err.println("Connection refused. You need to initiate a server first.");
-		} 
-		catch ( ClassNotFoundException e ) {
-            		System.err.println("Class not found");
-        	} 
-		catch(UnknownHostException unknownHost){
+		} catch (ConnectException e) {
+			System.err.println("Connection refused. You need to initiate a server first.");
+		} catch (ClassNotFoundException e) {
+			System.err.println("Class not found");
+		} catch (UnknownHostException unknownHost) {
 			System.err.println("You are trying to connect to an unknown host!");
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			ioException.printStackTrace();
-		}
-		finally{
+		} finally {
 			//Close connections
-			try{
+			try {
 				in.close();
 				out.close();
 				requestSocket.close();
 				System.out.printf("Connection to %s on port %d closed%n", this.host, this.port);
-			}
-			catch(IOException ioException){
+			} catch (IOException ioException) {
 				ioException.printStackTrace();
 			}
 		}
 	}
+
 	//send a message to the output stream
-	void sendMessage(String msg)
-	{
-		try{
+	void sendMessage(String msg) {
+		try {
 			//stream write the message
 			out.writeObject(msg);
 			out.flush();
-		}
-		catch(IOException ioException){
+		} catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
 	}
@@ -93,9 +84,27 @@ public class Client extends Thread {
 			out.write(new byte[10]);
 			out.writeInt(this.peerID);
 			out.flush();
-		}
-		catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	void receiveHandshake(ObjectInputStream in) throws IOException {
+		// Read the handshake header
+		byte[] headerBytes = new byte[18];
+		in.readFully(headerBytes);
+		String header = new String(headerBytes);
+
+		// Read the zero bits
+		byte[] zeroBytes = new byte[10];
+		in.readFully(zeroBytes);
+
+		// Read the peer ID
+		int peerID = in.readInt();
+
+		// Print the handshake data
+		System.out.println("Handshake Header: " + header);
+		System.out.println("Zero Bits: " + new String(zeroBytes));
+		System.out.println("Peer ID: " + peerID);
 	}
 }
