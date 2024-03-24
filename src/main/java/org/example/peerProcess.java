@@ -1,6 +1,7 @@
 package org.example;
 
 public class peerProcess {
+    /*
     public static void main(String[] args) {
         try {
             Peer peer0 = new Peer(Integer.parseInt(args[0]), 8000);
@@ -10,4 +11,7 @@ public class peerProcess {
             e.printStackTrace();
         }
     }
+    */
+
+   
 }
